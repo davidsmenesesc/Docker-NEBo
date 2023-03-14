@@ -4,6 +4,7 @@ pipeline {
   environment {
     dockerimagebackend = "davidsmenesesc/cosa-loca"
     dockerBack= ""
+    GIT_TOKEN= credentials('Ansible-git-creds')
   }
 
 agent any
@@ -35,6 +36,11 @@ stages {
             dockerBack.push('latest')
           }
         }
+      }
+    }
+    stage('checkout ansible repo'){
+      steps{
+        git credentialsId: 'Ansible-git-creds', url: 'https://github.com/davidsmenesesc/ansible-task.git'
       }
     }
     stage('Execute playbook'){
