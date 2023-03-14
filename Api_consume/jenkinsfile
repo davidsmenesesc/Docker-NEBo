@@ -40,12 +40,13 @@ stages {
     }
     stage('checkout ansible repo'){
       steps{
-        git credentialsId: 'Ansible-git-creds', url: 'https://github.com/davidsmenesesc/ansible-task.git'
+        checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'Ansible-git-creds', url: 'https://github.com/davidsmenesesc/ansible-task.git']])
       }
     }
     stage('Execute playbook'){
         steps{
-            ansiblePlaybook credentialsId: 'JenkinsaAnsible', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/home/yasufernando1_gmail_com/ansible/deploy.yaml', playbook: '/home/yasufernando1_gmail_com/ansible/deploy.yaml'
+            //ansiblePlaybook credentialsId: 'JenkinsaAnsible', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/home/yasufernando1_gmail_com/ansible/deploy.yaml', playbook: '/home/yasufernando1_gmail_com/ansible/deploy.yaml'
+            sh'env'        
         }
     }
  }
