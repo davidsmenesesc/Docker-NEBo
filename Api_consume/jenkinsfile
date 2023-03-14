@@ -49,7 +49,7 @@ stages {
             sh 'cat deploy.yaml'
             sh 'cat inventory.ini'
             sh 'ansible-playbook deploy.yaml -i inventory.ini --user=yasufernando1 \
-                              --extra-vars "ansible_sudo_pass=Willebardo01" '
+                              --extra-vars "ansible_become_pass=Willebardo01" '
             //ansiblePlaybook credentialsId: 'Ssh-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.ini', playbook: 'deploy.yaml'
         }
     }
