@@ -47,7 +47,7 @@ stages {
         steps{
             //ansiblePlaybook credentialsId: 'JenkinsaAnsible', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/home/yasufernando1_gmail_com/ansible/deploy.yaml', playbook: '/home/yasufernando1_gmail_com/ansible/deploy.yaml'
             sh'ls'
-            ansiblePlaybook credentialsId: 'Ssh-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.ini', playbook: 'deploy.yaml'        
+            ansiblePlaybook becomeUser: 'yasufernando1', credentialsId: 'Ssh-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.ini', playbook: 'deploy.yaml', sudoUser: 'yasufernando1'
         }
     }
  }
