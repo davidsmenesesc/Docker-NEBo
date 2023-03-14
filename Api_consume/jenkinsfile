@@ -48,6 +48,7 @@ stages {
             sh'ls'
             sh 'cat deploy.yaml'
             sh 'cat inventory.ini'
+            sh 'cat /var/lib/jenkins/workspace/cicd/ssh3291775840360420039.key'
             ansiblePlaybook credentialsId: 'Ssh-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.ini', playbook: 'deploy.yaml'
         }
     }
