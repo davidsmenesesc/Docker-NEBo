@@ -45,7 +45,6 @@ stages {
     }
     stage('Execute playbook'){
         steps{
-            //ansiblePlaybook credentialsId: 'JenkinsaAnsible', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/home/yasufernando1_gmail_com/ansible/deploy.yaml', playbook: '/home/yasufernando1_gmail_com/ansible/deploy.yaml'
             sh'ls'
             sh 'cat deploy.yaml'
             sh 'cat inventory.ini'
