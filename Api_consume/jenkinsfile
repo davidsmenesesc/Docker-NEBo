@@ -37,9 +37,14 @@ stages {
         }
       }
     }
-    stage('Deploy image'){
+    stage('checkout'){
+      steps{
+          checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/davidsmenesesc/cosa-loca.git']])
+      }
+    }
+    stage('Execute playbook'){
         steps{
-            sh 'docker run -d -p 4000:4000 davidsmenesesc/cosa-loca:latest'
+            ansiblePlaybook credentialsId: 'JenkinsaAnsible', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/home/yasufernando1_gmail_com/ansible/deploy.yaml', playbook: '/home/yasufernando1_gmail_com/ansible/deploy.yaml'
         }
     }
  }
