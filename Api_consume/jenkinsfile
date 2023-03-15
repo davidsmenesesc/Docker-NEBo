@@ -42,16 +42,16 @@ stages {
             checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/davidsmenesesc/iac-crash-course.git']])
         }
     }
-    stage('Terraform init'){
-      steps{
-          sh 'terraform init'
-      }
-    }
-    stage('Terraform apply'){
-      steps{
-          sh 'terraform apply --auto-approve'
-      }
-    }
+    // stage('Terraform init'){
+    //   steps{
+    //       sh 'terraform init'
+    //   }
+    // }
+    // stage('Terraform apply'){
+    //   steps{
+    //       sh 'terraform apply --auto-approve'
+    //   }
+    // }
     stage('checkout ansible repo'){
       steps{
         checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'Ansible-git-creds', url: 'https://github.com/davidsmenesesc/ansible-task.git']])
@@ -62,8 +62,6 @@ stages {
             sh'ls'
             sh 'cat deploy.yaml'
             sh 'cat inventory.ini'
-            //sh 'ansible-playbook deploy.yaml -i inventory.ini --user=yasufernando1 \
-            //                  --extra-vars "ansible_become_pass=Willebardo01" '
             ansiblePlaybook credentialsId: 'Ssh-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.ini', playbook: 'deploy.yaml'
         }
     }
