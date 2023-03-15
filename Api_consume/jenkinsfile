@@ -62,6 +62,7 @@ stages {
             sh'ls'
             sh 'cat deploy.yaml'
             sh 'cat inventory.ini'
+            sh 'cat deploy.yaml '
             ansiblePlaybook credentialsId: 'Ssh-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.ini', playbook: 'deploy.yaml'
         }
     }
