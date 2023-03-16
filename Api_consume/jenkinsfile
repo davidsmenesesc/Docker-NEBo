@@ -42,11 +42,11 @@ stages {
             checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/davidsmenesesc/iac-crash-course.git']])
         }
     }
-    // stage('Terraform init'){
-    //   steps{
-    //       sh 'terraform init'
-    //   }
-    // }
+    stage('Terraform init'){
+      steps{
+          sh 'terraform init'
+      }
+    }
     // stage('Terraform apply'){
     //   steps{
     //       sh 'terraform apply --auto-approve'
